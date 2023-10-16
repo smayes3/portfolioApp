@@ -1,0 +1,21 @@
+/* style for all classes in html document called header with the id of heading */
+.header#heading
+{
+    color: #f4d03f; /* Gold */
+}
+
+/* style for all classes in html doc called subheading */
+.subheading
+{
+    color: #818181; /* Gray */
+}
+
+/* style for all classes in html doc called testButton */
+.testButton
+{
+    background-color: #818181; /* make bg color gray */
+    border: #f4d03f; /* make border color gold */
+    color: #f4d03f; /* make text color */
+    font-weight: bold; /* make text bold */
+    border-radius: 6px; /* round 6 pixels of corner */
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+    <!-- Add metadata information that wont be displayed on the actual page -->
+    <head>
+        <title>GE04 - Stephanie Mayes</title> <!-- Give the document a title -->
+        <meta charset="utf-8"> <!-- character set -->
+        <meta name="author" content="Stephanie Mayes"> <!-- author -->
+        <meta name="assignment" content="GE04"> <!-- assignment -->
+        <meta name="class" content="CS3300-001"> <!-- class -->
+        <meta name="viewport" content="width=device-width"> <!-- viewport depends on device -->
+        <link rel="stylesheet" href="GE04_styles.css"/> <!-- Link the stylesheet -->
+    </head>
+    
+    <!-- Document Body -->
+    <body>
+        <!-- Add info to header, shown at top -->
+        <div class="header">
+            <header>
+                <h1 id="heading"> My Portfolio </h1>
+                <h2 id="myName"> Stephanie Mayes </h2>
+                <p id="degree"> <a href="https://catalog.uccs.edu/preview_program.php?catoid=16&poid=3470&returnto=1219"> B.S. Computer Science</a> <br> <a href="https://catalog.uccs.edu/preview_program.php?catoid=16&poid=3466&returnto=1219"> Minor in Computer Engineering</a></p>
+            </header>
+        </div>
+        
+        <!-- introduction section -->
+        <h3 id="introduction"> About Me </h3>
+        <p>
+            My name is Stephanie Mayes, I am an undergraduate student at the University of Colorado - Colorado Springs. 
+            I am pursuing a Bachelor of Science (B.S.) in Computer Science and a minor in Computer Engineering, with an expected graduation date of May 2024. 
+            I have 4.5 years of professional experience within the IT field, serving four of those years in the U.S. Marine Corps as a Systems Administrator.
+        </p>
+
+        <!-- technical skills subheading -->
+        <div class="subheading">
+            <h4 id="techSkills"> Technical Skills </h4>
+            <ul>
+                <li> C </li>
+                <li> C++ </li>
+                <li> Java </li>
+                <li> Python </li>
+                <li> R </li>
+                <li> Lisp/Scheme </li>
+                <li> x86 Assembly </li>
+                <li> Verilog/HDL </li>
+                <li> HTML/CSS/JavaScript </li>
+                <li> Git/GitHub </li>
+            </ul>
+        </div>
+
+        <!-- Add an example form for section 2.5-->
+        <form>
+            <!-- #1: for attr: specifies the element to be associated with, Username: content/caption for the form element -->
+            <!-- #2: type attr: specifies accepted/expected input, id attr: associates the input to the label, name attr: gives the element a name -->
+            <!-- #3: type attr: specify input type as button, class: specify the element class, value: text overlay for the button, onclick: specify what happens when button clicked -->
+            
+            <label for="username"> Username: </label> <!-- #1 -->
+            <input type="text" id="username" name="username"> <!-- #2 -->
+            <label for="password"> Password: </label> <!-- #1 -->
+            <input type="password" id="password" name="password"> <!-- #2 -->
+            <input type="button" class="testButton" value="Test Button" onclick="alert('The button works!')">
+        </form>
+
+
+    </body>
+</html>
