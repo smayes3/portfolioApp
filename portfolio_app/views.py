@@ -8,9 +8,13 @@ from django.views import generic
 from django.contrib import messages
 
 # Create your views here.
+
+#update in GE05
 def index(request):
-    #return HttpResponse('home page')
-    return render(request, 'portfolio_app/index.html')
+    student_active_portfolios = Student.objects.select_related('portfolio').all().filter(portfolio__is_active=True)
+    print("active portfolio query set", student_active_portfolios)
+    return render( request, 'portfolio_app/index.html', {'student_active_portfolios':student_active_portfolios})
+
 
 
 # GE05 - APPLY create generic student list and detail views
@@ -29,5 +33,14 @@ class StudentListView(generic.ListView):
     model = Student 
 
 #create generic student detail view - ge05
-class StudentDetailView(generic.ListView):
+class StudentDetailView(generic.DetailView):
     model = Student
+
+
+#create generic Portfolio list view - ge05
+class PortfolioListView(generic.ListView):
+    model = Portfolio
+
+#create generic Portfolio detail view - ge05
+class PortfolioDetailView(generic.DetailView):
+    model = Portfolio

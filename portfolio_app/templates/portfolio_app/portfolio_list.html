@@ -1,0 +1,27 @@
+<!-- GE05 -->
+<!-- this is the default template file expected by generic portfolio list view -->
+
+
+{% extends 'portfolio_app/base_template.html' %}
+{% block content %}
+
+<h1>Portfolio List</h1>
+
+<!-- Check if portfolio list exists -->
+{% if portfolio_list %}
+<ul>
+    <!-- for each portfolio in the list -->
+    {% for portfolio in portfolio_list %}
+    <li>
+        <!-- create list item for each portfolio that shows the detailed record view and shows portfolio title -->
+        <a href="{{ portfolio.get_absolute_url }}">{{ portfolio.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<!-- no portfolio list exists -->
+{% else %}
+<!-- print msg -->
+<p>There are no portfolios.</p>
+
+{% endif %}
+{% endblock %}

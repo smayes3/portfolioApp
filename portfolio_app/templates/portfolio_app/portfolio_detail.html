@@ -1,0 +1,19 @@
+<!-- GE05 -->
+<!-- displays information about a specific student's portfolio, accessed by URL "portfolio_app/portfolio/<id>" -->
+<!-- <id> is primary key (pk) for student -->
+
+<!-- source: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Generic_views#book_detail_page -->
+
+
+{% extends 'portfolio_app/base_template.html' %}
+{% block content %}
+
+<!-- display the Portfolio title -->
+<h1>Portfolio Title: {{ portfolio.title }}</h1>
+
+<!-- display student info with bold text label -->
+<p><strong>Active:</strong> {{ portfolio.is_active }}</p>
+<p><strong>About:</strong> {{ portfolio.about }}</p>
+<p><strong>Contact Email:</strong> {{ portfolio.contact_email }} </p>
+
+{% endblock %}
