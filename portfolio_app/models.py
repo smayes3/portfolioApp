@@ -60,7 +60,8 @@ class Project(models.Model):
         return reverse('project-detail', args=[str(self.id)])
     
 
-# ProjectsInPortfolio model
+#commented out for ge05
+""" # ProjectsInPortfolio model
 # represents the relaitonship between projects and portfolios
 # each instance of this model will have a reference to a Portfolio and a Project,
 # creating a many:many relationship
@@ -74,4 +75,4 @@ class ProjectsInPortfolio(models.Model):
 
     class Meta:
         #ensures that each project is associated with only one portfolio
-        unique_together = ('portfolio', 'project')
+        unique_together = ('portfolio', 'project') """
