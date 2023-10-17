@@ -1,0 +1,18 @@
+<!-- GE05 -->
+<!-- displays information about a specific student's project, accessed by URL "portfolio_app/project/<id>" -->
+<!-- <id> is primary key (pk) for student -->
+
+
+
+{% extends 'portfolio_app/base_template.html' %}
+{% block content %}
+
+<!-- display the Project title -->
+<h1>Project Title: {{ project.title }}</h1>
+
+<!-- display project info with bold text label -->
+<p><strong>Description:</strong> {{ project.description }}</p>
+<p><strong>Portfolio:</strong> <a href="{{ project.portfolio.get_absolute_url }}">{{ project.portfolio.title }} </a></p>
+
+
+{% endblock %}

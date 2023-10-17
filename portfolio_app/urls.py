@@ -29,4 +29,9 @@ urlpatterns= [
     path('portfolios/', views.PortfolioListView.as_view(), name='portfolios'),
     path('portfolio/<int:pk>', views.PortfolioDetailView.as_view(), name='portfolio-detail'),
 
+    #add paths for generic project list and detail views - GE05
+    path('projects/', views.ProjectListView.as_view(), name='projects'),
+    path('project/<int:pk>', views.ProjectDetailView.as_view(), name='project-detail'),
+
+
 ]

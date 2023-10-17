@@ -44,3 +44,11 @@ class PortfolioListView(generic.ListView):
 #create generic Portfolio detail view - ge05
 class PortfolioDetailView(generic.DetailView):
     model = Portfolio
+
+#create generic Project list view - ge05
+class ProjectListView(generic.ListView):
+    model = Project
+
+#create generic Project detail view - ge05
+class ProjectDetailView(generic.DetailView):
+    model = Project
