@@ -1,0 +1,28 @@
+<!-- GE05 -->
+<!-- this is the default template file expected by generic student list view -->
+<!-- source: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Generic_views#creating_the_list_view_template -->
+
+
+{% extends 'portfolio_app/base_template.html' %}
+{% block content %}
+
+<h1>Student List</h1>
+
+<!-- Check if student list exists -->
+{% if student_list %}
+<ul>
+    <!-- for each student in the list -->
+    {% for student in student_list %}
+    <li>
+        <!-- create list item for each student that shows the detailed record view and shows student name -->
+        <a href="{{ student.get_absolute_url }}">{{ student.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<!-- no student list exists -->
+{% else %}
+<!-- print msg -->
+<p>There are no students registered.</p>
+
+{% endif %}
+{% endblock %}

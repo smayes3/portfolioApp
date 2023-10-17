@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio_app',
     'django_bootstrap5', #from pip install django-bootstrap5 ge05 modification
+    #'bootstrap5',
 ]
 
 AUTHENTICATION_BACKENDS = [
