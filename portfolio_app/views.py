@@ -1,5 +1,5 @@
 from typing import Any
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 
 # GE05 updates:
@@ -108,3 +108,32 @@ def createProject(request, portfolio_id):
 
     #render the form
     return render(request, 'portfolio_app/project_form.html', context)
+
+
+#function to delete project from portfolio detail page - ge05
+# sources:
+# https://www.geeksforgeeks.org/delete-view-function-based-views-django/
+def deleteProject(request, pk, portfolio_id):
+    
+    #get the project that needs to be deleted
+    project = get_object_or_404(Project, pk=pk)
+
+    #get portfolio id
+    portfolioID = Portfolio.objects.get(pk=portfolio_id)
+
+    #set dictionary values
+   # projectTitle = Project.objects.get(title=project.title)
+    context = {'title': project.title}
+
+    #delete the project
+    if request.method == "POST":
+        project.delete()
+
+        #redirect back to portfolio detail page
+        return redirect('portfolio-detail', portfolio_id)
+    
+    #display delete confirmation page
+    return render(request, "portfolio_app/project_delete.html", context) 
+
+
+#function to update project from portfolio detail page - ge05

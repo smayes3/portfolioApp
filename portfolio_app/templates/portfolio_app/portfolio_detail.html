@@ -35,6 +35,7 @@
         <!-- Add button to view projects -->
         {{ project.title }}:  
         <a class="btn btn-primary" href="{{ project.get_absolute_url }}" role="button"> View Project </a>
+        <a class="btn btn-danger" href="{% url 'delete_project' portfolio.id project.pk %}" role="button"> Delete </a>
     </li>
 
     <!-- if no projects in list -->

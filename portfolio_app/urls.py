@@ -36,4 +36,12 @@ urlpatterns= [
     #add path to create project - ge05
     path('portfolio/<int:portfolio_id>/create_project/', views.createProject, name='create_project'),
 
+    #add path to delete project - ge05
+    path('portfolio/<int:portfolio_id>/delete_project/<int:pk>', views.deleteProject, name='delete_project'),
+
+    #add path to update project - ge05
+    #path('portfolio/<int:portfolio_id/update_project/', views.updateProject, name='update_project'),
+
+
+
 ]
