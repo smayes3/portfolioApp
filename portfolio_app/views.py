@@ -146,7 +146,7 @@ def updateProject(request, pk, portfolio_id):
     portfolio = Portfolio.objects.get(pk=portfolio_id)
     project = get_object_or_404(Project, pk=pk)    
     
-    #pass portfolio as form instance
+    #pass project as form instance
     form = ProjectForm(request.POST or None, instance=project)
 
     #save form data and redirect
@@ -159,4 +159,23 @@ def updateProject(request, pk, portfolio_id):
     return render(request, 'portfolio_app/project_update.html', context)
 
 
+
+#function to update portfolio from student details page - ge05
+def updatePortfolio(request, pk):
+    #initialize dictionary
+    context = {}
+    #get portfolio id
+    portfolio = get_object_or_404(Portfolio, pk=pk)
+
+    #pass portfolio as form instance
+    form = PortfolioForm(request.POST or None, instance=portfolio)
+
+    #save form and redirect back to student details
+    if form.is_valid():
+        form.save()
+        return redirect('student-detail', pk)
+    
+    #add form dictionary to context and render
+    context["form"] = form
+    return render(request, 'portfolio_app/portfolio_form.html', context)
 

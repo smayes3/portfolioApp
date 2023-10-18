@@ -42,6 +42,7 @@ urlpatterns= [
     #add path to update project - ge05
     path('portfolio/<int:portfolio_id>/update_project/<int:pk>', views.updateProject, name='update_project'),
 
-
+    #add path to update portfolio - ge05
+    path('portfolio/update_portfolio/<int:pk>', views.updatePortfolio, name='update_portfolio'),
 
 ]

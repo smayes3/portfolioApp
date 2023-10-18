@@ -16,6 +16,7 @@
     <strong>Email:</strong> {{ student.email }}<br>
     <strong>Major:</strong> {{ student.major }}<br>
     <strong>Portfolio:</strong> <a href="{{ student.portfolio.get_absolute_url }}">{{ student.portfolio.title }} </a>
+    <a class="btn btn-warning" href="{% url 'update_portfolio' student.pk %}" role="button"> Update </a>
 </p>
 
 {% endblock %}
