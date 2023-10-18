@@ -83,7 +83,6 @@ def createProject(request, portfolio_id):
     #get the portfolio based on id/pk
     portfolio = Portfolio.objects.get(pk=portfolio_id)
     
-
     if request.method == 'POST':
         # Create a new dictionary with form data and portfolio_id
         project_data = request.POST.copy()
@@ -111,6 +110,7 @@ def createProject(request, portfolio_id):
 
 
 #function to delete project from portfolio detail page - ge05
+# pk is project id
 # sources:
 # https://www.geeksforgeeks.org/delete-view-function-based-views-django/
 def deleteProject(request, pk, portfolio_id):
@@ -137,3 +137,26 @@ def deleteProject(request, pk, portfolio_id):
 
 
 #function to update project from portfolio detail page - ge05
+#sources:
+# https://www.geeksforgeeks.org/update-view-function-based-views-django/?ref=lbp
+def updateProject(request, pk, portfolio_id):
+    #initialize dictionary
+    context = {}
+    #get portfolio and project id
+    portfolio = Portfolio.objects.get(pk=portfolio_id)
+    project = get_object_or_404(Project, pk=pk)    
+    
+    #pass portfolio as form instance
+    form = ProjectForm(request.POST or None, instance=project)
+
+    #save form data and redirect
+    if form.is_valid():
+        form.save()
+        return redirect('portfolio-detail', portfolio_id)
+    
+    #add form dictionary to context and render
+    context["form"] = form
+    return render(request, 'portfolio_app/project_update.html', context)
+
+
+

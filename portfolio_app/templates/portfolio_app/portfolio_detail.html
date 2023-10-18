@@ -36,6 +36,7 @@
         {{ project.title }}:  
         <a class="btn btn-primary" href="{{ project.get_absolute_url }}" role="button"> View Project </a>
         <a class="btn btn-danger" href="{% url 'delete_project' portfolio.id project.pk %}" role="button"> Delete </a>
+        <a class="btn btn-warning" href="{% url 'update_project' portfolio.id project.pk %}" role="button"> Update </a>
     </li>
 
     <!-- if no projects in list -->
