@@ -1,5 +1,5 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
 # GE05 updates:
@@ -7,6 +7,7 @@ from .models import *   # --> import all models defined in models.py
 from django.views import generic 
 #from .forms import ProjectForm, PortfolioForm  # --> commented out during GE05 apply models and db prep
 from django.contrib import messages
+from portfolio_app.forms import * # --> import all forms defined in forms.py
 
 # Create your views here.
 
@@ -68,3 +69,42 @@ class ProjectListView(generic.ListView):
 #create generic Project detail view - ge05
 class ProjectDetailView(generic.DetailView):
     model = Project
+
+
+
+#create project function - ge05
+# creates project associated with a portfolio
+# source:
+# https://chat.openai.com/share/e5e5d2b2-58ed-4420-ab7c-0e79732a697b
+# https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
+def createProject(request, portfolio_id):
+    #create project form
+    form = ProjectForm()
+    #get the portfolio based on id/pk
+    portfolio = Portfolio.objects.get(pk=portfolio_id)
+    
+
+    if request.method == 'POST':
+        # Create a new dictionary with form data and portfolio_id
+        project_data = request.POST.copy()
+        project_data['portfolio_id'] = portfolio_id
+        
+        #update the form with the data
+        form = ProjectForm(project_data)
+        
+        if form.is_valid():
+            # Save the form without committing to the database
+            project = form.save(commit=False)
+            # Set the portfolio relationship
+            project.portfolio = portfolio
+            #save project
+            project.save()
+
+            # Redirect back to the portfolio detail page
+            return redirect('portfolio-detail', portfolio_id)
+    
+    #update dictionary
+    context = {'form': form}
+
+    #render the form
+    return render(request, 'portfolio_app/project_form.html', context)

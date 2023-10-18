@@ -22,26 +22,34 @@
 <!-- display list of projects -->
 <h2>Projects:</h2>
 
-<!-- Check if project list exists -->
-    {% if portfolio.project_set %}
-    <ul>
-        <!-- for each project in the list -->
-        {% for project in portfolio.project_set.all %}
-            <li>
-                <!-- create list item for each project that shows the detailed record view and shows project title -->
-                <a href="{{ project.get_absolute_url }}">{{ project.title }}</a>
-            </li>
+<!-- Add button to create new projects -->
+<a class="btn btn-primary" href="{% url 'create_project' portfolio.id %}" role="button"> New Project </a>
 
-            <!-- if no projects in list -->
-            {% empty %}
-            <p> There are no projects. </p>
-            
-        {% endfor %}
-    </ul>
-    <!-- no project list exists -->
-    {% else %}
-        <!-- print msg -->
-        <p> There are no projects. </p>
-    
-    {% endif %}
+<!-- Check if project list exists -->
+{% if portfolio.project_set %}
+<ul>
+    <!-- for each project in the list -->
+    {% for project in portfolio.project_set.all %}
+    <li>
+        <!-- create list item for each project that shows the detailed record view and shows project title -->
+        <!-- Add button to view projects -->
+        {{ project.title }}:  
+        <a class="btn btn-primary" href="{{ project.get_absolute_url }}" role="button"> View Project </a>
+    </li>
+
+    <!-- if no projects in list -->
+    {% empty %}
+    <p> There are no projects. </p>
+
+    {% endfor %}
+</ul>
+<!-- no project list exists -->
+{% else %}
+<!-- print msg -->
+<p> There are no projects. </p>
+
+{% endif %}
+
+
+
 {% endblock %}
