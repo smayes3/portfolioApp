@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -44,6 +45,21 @@ class PortfolioListView(generic.ListView):
 #create generic Portfolio detail view - ge05
 class PortfolioDetailView(generic.DetailView):
     model = Portfolio
+
+    #override get_context_data() function to show all projects in the portfolio - ge05
+    #source: 
+    # https://docs.djangoproject.com/en/4.2/topics/class-based-views/generic-display/
+    # https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Generic_views
+    def get_context_data(self, **kwargs):
+        
+        #call base implementation to get context
+        context = super().get_context_data(**kwargs)
+        #add QuerySet of all projects
+        context["project_list"] = Project.objects.all()
+        #return the QS
+        return context
+
+
 
 #create generic Project list view - ge05
 class ProjectListView(generic.ListView):

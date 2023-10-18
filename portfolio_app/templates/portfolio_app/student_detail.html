@@ -12,8 +12,10 @@
 <h1>Student Name: {{ student.name }}</h1>
 
 <!-- display student info with bold text label -->
-<p><strong>Email:</strong> {{ student.email }}</p>
-<p><strong>Major:</strong> {{ student.major }}</p>
-<p><strong>Portfolio:</strong> <a href="{{ student.portfolio.get_absolute_url }}">{{ student.portfolio.title }} </a></p>
+<p>
+    <strong>Email:</strong> {{ student.email }}<br>
+    <strong>Major:</strong> {{ student.major }}<br>
+    <strong>Portfolio:</strong> <a href="{{ student.portfolio.get_absolute_url }}">{{ student.portfolio.title }} </a>
+</p>
 
 {% endblock %}

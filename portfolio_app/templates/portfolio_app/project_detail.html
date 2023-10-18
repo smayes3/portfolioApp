@@ -11,8 +11,11 @@
 <h1>Project Title: {{ project.title }}</h1>
 
 <!-- display project info with bold text label -->
-<p><strong>Description:</strong> {{ project.description }}</p>
-<p><strong>Portfolio:</strong> <a href="{{ project.portfolio.get_absolute_url }}">{{ project.portfolio.title }} </a></p>
+<p>
+    <strong>Description:</strong><br>
+    {{ project.description }}<br>
+    <strong>Portfolio:</strong> <a href="{{ project.portfolio.get_absolute_url }}">{{ project.portfolio.title }} </a><br>
+</p>
 
 
 {% endblock %}
